@@ -11,6 +11,11 @@
 }
 
 /* base html & body config */
+
+* {
+  box-sizing: border-box;
+}
+
 html {
   font-size: 26px;
   -webkit-text-size-adjust: 100%;
@@ -18,7 +23,7 @@ html {
 
 body {
   margin: 0;
-  min-height: 100dvh;
+  padding: 0;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -31,4 +36,15 @@ body {
     Helvetica,
     Arial,
     sans-serif;
+}
+
+/* Horizontal slider */
+#horizontal {
+  overflow-x: hidden;
+}
+
+#horizontal .content {
+  height: 100vh;
+  width: 100vw;
+  flex-shrink: 0;
 }
