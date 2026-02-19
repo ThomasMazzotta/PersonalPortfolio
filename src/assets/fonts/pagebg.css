@@ -1,0 +1,18 @@
+:root {
+  --paper: #fbfbf6; /* paper color */
+  --line: rgba(59, 130, 246, 0.18); /* line color */
+  --line-gap: 28px;
+  --line-thickness: 1px;
+}
+
+body {
+  background-color: var(--paper);
+
+  background-image: linear-gradient(
+    to bottom,
+    transparent calc(var(--line-gap) - var(--line-thickness)),
+    var(--line) 0
+  );
+  background-size: 100% var(--line-gap);
+  background-position: 0 0;
+}
