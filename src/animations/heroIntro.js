@@ -2,6 +2,15 @@ import { gsap } from "gsap"
 import { SplitText } from "gsap/SplitText"
 gsap.registerPlugin(SplitText)
 
+const CRAYON = [
+  "#F06292", // rose
+  "#4AA3DF", // sky
+  "#34C6A3", // mint
+  "#7C5CFF", // lavender
+  "#FF8A5B", // peach
+  "#FFC84A", // butter
+]
+
 export function startSunWiggle() {
   const rand = gsap.utils.random
 
@@ -31,19 +40,23 @@ export function startSunWiggle() {
   loop()
 }
 
-export function textAnimation() {
-  const text = document.querySelector("#text-animation")
+export function textRainbowAnimation() {
+  const text = document.querySelector("#main-text")
   if (!text) return
 
-  let split = SplitText.create(text, { type: "chars" })
+  const split = SplitText.create(text, { type: "chars" })
+
+  gsap.set(split.chars, {
+    color: (i) => CRAYON[i % CRAYON.length],
+  })
 
   gsap.from(split.chars, {
-    yPercent: "random([-100, 100])",
-    rotation: "random(-30,30)",
-    ease: "back.out",
-    autoAlpha: -8,
-    stagger: 0.1,
-    repeat: -1,
+    yPercent: (i) => (i % 2 ? 80 : -80),
+    rotation: () => gsap.utils.random(-25, 25),
+    ease: "back.out(1.6)",
+    autoAlpha: 0,
+    stagger: 0.06,
     yoyo: true,
+    duration: 0.9,
   })
 }
